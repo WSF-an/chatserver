@@ -18,6 +18,11 @@ public interface ChatListService extends IService<ChatList> {
     //boolean removeChatList(Long userId, Long conversationId);
 
     /**
+     * 获取一个会话
+     */
+    ChatList getChatList(Long userId, Long conversationId);
+
+    /**
      * 查询某用户下的所有conversationId
      */
     List<ChatList> getChatList(Long userId);

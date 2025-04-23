@@ -30,6 +30,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
             if(count > 0){
                 throw new IllegalArgumentException("账户已经注册");
             }
+
             User user = new User();
             user.setUserAccount(userAccount);
             user.setUserPassword(userPassword);

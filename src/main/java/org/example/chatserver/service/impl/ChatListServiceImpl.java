@@ -16,6 +16,19 @@ import java.util.List;
 public class ChatListServiceImpl extends ServiceImpl<ChatListMapper, ChatList> implements ChatListService {
 
     @Override
+    public ChatList getChatList(Long userId, Long conversationId) {
+        ChatList chatList = new ChatList();
+        QueryWrapper<ChatList> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId);
+        queryWrapper.eq("conversation_id", conversationId);
+        chatList = this.baseMapper.selectOne(queryWrapper);
+        if(chatList == null){
+            log.info("该会话不存在");
+        }
+        return chatList;
+    }
+
+    @Override
     public boolean addChatList(Long userId, Long conversationId, String description) {
         ChatList charList = new ChatList();
         charList.setUserId(userId);
